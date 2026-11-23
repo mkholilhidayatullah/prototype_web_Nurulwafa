@@ -91,9 +91,15 @@
     if (t) return t === 'dark';
     return window.matchMedia('(prefers-color-scheme: dark)').matches;
   }
+  var THEME_TXT = {
+    id: { toDark: '☾ Mode Gelap', toLight: '☀ Mode Terang' },
+    en: { toDark: '☾ Dark Mode', toLight: '☀ Light Mode' }
+  };
   function syncThemeBtn() {
-    themeBtn.setAttribute('aria-pressed', isDark() ? 'true' : 'false');
-    themeBtn.textContent = isDark() ? T('theme_light') : T('theme_dark');
+    var dark = isDark();
+    themeBtn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+    var t = THEME_TXT[curLang] || THEME_TXT.id;
+    themeBtn.textContent = dark ? t.toLight : t.toDark;
   }
   themeBtn.addEventListener('click', function () {
     document.documentElement.setAttribute('data-theme', isDark() ? 'light' : 'dark');
@@ -167,7 +173,7 @@
   var EN = {
     addr_short: 'Watu Ketu Hamlet, Jl. PG. Demaas, Demung Village, Besuki District, Situbondo Regency 68356',
     theme_dark: 'Dark Mode', theme_light: 'Light Mode',
-    brand_sub: 'Nurul Wafa Foundation · Demung, Besuki, Situbondo — East Java',
+    brand_sub: 'Nurul Wafa Foundation', brand_loc: 'Demung, Besuki, Situbondo — East Java',
     ms_label: 'Information & Registration', ms_note: 'Boarding school phone / WhatsApp',
     nav_home: 'Home', nav_profil: 'Profile', nav_unit: 'Education Units', nav_program: 'Programs', nav_berita: 'News', nav_galeri: 'Gallery', nav_kontak: 'Contact',
     nav_psb: 'New Student Registration (PSB) →',
