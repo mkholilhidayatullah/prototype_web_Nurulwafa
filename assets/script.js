@@ -240,7 +240,7 @@
     pr4_h: 'Nahwu & Sharaf Memorisation', pr4_p: 'Memorising Arabic grammar rules as the foundation for santri to read and understand the kitab kuning independently.',
     pr5_h: 'Istigasah & Amaliah', pr5_p: 'Regular istigasah and devotional practices of the boarding school community — nurturing closeness to Allah and togetherness among santri.',
     pr6_h: 'Pilgrimage to the Founder’s Tomb', pr6_p: 'Visiting the tomb of the late KH. Ahmad Sibawayhie Syadzli — honouring the founder’s service and following his example.',
-    quran_cap: 'Santri reciting the Qur’an to one another — listening to and correcting each other’s recitation.',
+    quran_cap: 'Nurul Wafa santri in front of the pondok gate — sarongs and peci caps, the everyday dress of pesantren life.',
     photo_note: 'At a pesantren, knowledge is not merely read — it is recited back, repeated, and written as glosses between the lines of the book.',
     kitab_cap: 'Studying the kitab kuning by writing meanings between its lines — a distinctive pesantren learning tradition.',
     fas_h2: 'Facilities',
@@ -301,6 +301,7 @@
     ft_h_kantor: 'Secretariat Office',
     addr_short3: 'Watu Ketu Hamlet, Jl. PG. Demaas, Demung Village, Besuki District, Situbondo Regency, East Java Province, Indonesia 68356',
     ft_wa: '(School WhatsApp)', ft_tel: '(Office)',
+    ft_h_sosmed: 'School Social Media',
     ft_h_profil: 'Profile',
     ft_l_profil: 'Profile & History', ft_l_pengasuh: 'Caretakers & Founder', ft_l_program: 'Santri Programs', ft_l_fasilitas: 'Facilities', ft_l_galeri: 'Photo Gallery',
     ft_h_bantuan: 'Help',
@@ -312,7 +313,9 @@
   var EN_PH = { ph_nama: EN.ph_nama, ph_asal: EN.ph_asal, ph_wali: EN.ph_wali, ph_pesan: EN.ph_pesan };
   var EN_ARIA = {
     a11y_font_down: 'Decrease font size', a11y_font_reset: 'Normal font size', a11y_font_up: 'Increase font size',
-    wa_float: 'Chat the school on WhatsApp'
+    wa_float: 'Chat the school on WhatsApp',
+    soc_fb: 'Ponpes Nurul Wafa on Facebook', soc_ig: 'Ponpes Nurul Wafa on Instagram (@ponpes_nurulwafa)',
+    soc_tt: 'Ponpes Nurul Wafa on TikTok (@pp.nurulwafa)', soc_yt: 'Ponpes Nurul Wafa on YouTube'
   };
   var curLang = 'id';
   function T(k) { return curLang === 'en' && EN[k] ? EN[k] : (ORIG[k] ? ORIG[k].replace(/<[^>]*>/g, '') : k); }
