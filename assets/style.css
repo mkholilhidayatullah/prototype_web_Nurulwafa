@@ -13,14 +13,8 @@
   --title:#14532d; --dark:#171a17; --dark-ink:#cfd4cc;
   --err:#a52a15;
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#12160f; --band:#171c13; --panel:#171c13;
-    --ink:#e7eae0; --ink-soft:#b6bcae; --ink-faint:#8b9081;
-    --line:#2e3628; --line-soft:#232a1e;
-    --green:#7fb069; --green-2:#9cc184; --title:#a9c795; --gold-ink:#d9b45c;
-  }
-}
+/* Mode gelap hanya aktif bila pengunjung memilihnya lewat tombol tema
+   (data-theme="dark"); bawaan situs selalu terang. */
 :root[data-theme="dark"]{
   --bg:#12160f; --band:#171c13; --panel:#171c13;
   --ink:#e7eae0; --ink-soft:#b6bcae; --ink-faint:#8b9081;
@@ -29,11 +23,6 @@
 }
 :root[data-theme="dark"] .psb, :root[data-theme="dark"] footer.site{
   --ink:#e9ecd9; --ink-soft:#c3d6b6;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]) .psb, :root:not([data-theme="light"]) footer.site{
-    --ink:#e9ecd9; --ink-soft:#c3d6b6;
-  }
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
