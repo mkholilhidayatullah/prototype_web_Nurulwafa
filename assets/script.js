@@ -10,16 +10,71 @@
     if (e.target.tagName === 'A') links.classList.remove('open');
   });
 
-  /* ---------- Reveal (one calm fade) ---------- */
-  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  /* ---------- Reveal (fade + rise, staggered per group) ---------- */
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    /* Stagger: elements revealed together rise one after another */
+    var seenParents = [];
+    document.querySelectorAll('.rv').forEach(function (el) {
+      var p = el.parentElement, idx = seenParents.indexOf(p);
+      if (idx === -1) { seenParents.push(p); idx = seenParents.length - 1; seenParents['n' + idx] = 0; }
+      var n = seenParents['n' + idx]++;
+      el.style.transitionDelay = Math.min(n, 3) * 90 + 'ms';
+    });
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
-        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+        if (en.isIntersecting) {
+          en.target.classList.add('in'); io.unobserve(en.target);
+          setTimeout(function () { en.target.style.transitionDelay = ''; }, 1200);
+        }
       });
-    }, { threshold: 0.08 });
+    }, { threshold: 0.08, rootMargin: '0px 0px -4% 0px' });
     document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
   } else {
     document.querySelectorAll('.rv').forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* ---------- Facility numbers count up when visible ---------- */
+  var facNums = document.querySelectorAll('.fac-strip b');
+  if (facNums.length && 'IntersectionObserver' in window && !reduceMotion) {
+    var counted = false;
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting || counted) return;
+        counted = true; cio.disconnect();
+        facNums.forEach(function (b) {
+          var target = parseInt(b.textContent, 10);
+          if (isNaN(target)) return;
+          var t0 = null;
+          function tick(ts) {
+            if (!t0) t0 = ts;
+            var p = Math.min((ts - t0) / 900, 1);
+            b.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+            if (p < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+        });
+      });
+    }, { threshold: 0.35 });
+    cio.observe(facNums[0].closest('.fac-strip'));
+  }
+
+  /* ---------- Hero photo: gentle parallax drift (desktop saja;
+     di HP foto tampil proporsional penuh, posisi dibiarkan tengah) ---------- */
+  var heroImg = document.querySelector('.hero-photo img');
+  if (heroImg && !reduceMotion && window.matchMedia('(min-width: 921px)').matches) {
+    var ticking = false;
+    function drift() {
+      ticking = false;
+      var y = window.scrollY || window.pageYOffset;
+      var hero = heroImg.parentElement;
+      if (y < hero.offsetTop + hero.offsetHeight + 80) {
+        heroImg.style.objectPosition = '50% ' + Math.max(18, 50 - y * 0.045) + '%';
+      }
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(drift); }
+    }, { passive: true });
   }
 
   /* ---------- Accessibility: font size ---------- */
@@ -116,6 +171,7 @@
     ms_label: 'Information & Registration', ms_note: 'Boarding school phone / WhatsApp',
     nav_home: 'Home', nav_profil: 'Profile', nav_unit: 'Education Units', nav_program: 'Programs', nav_berita: 'News', nav_galeri: 'Gallery', nav_kontak: 'Contact',
     nav_psb: 'New Student Registration (PSB) →',
+    hero_cap: 'Haflatul Imtihan & the 46th Haul of Ponpes Nurul Wafa, Demung — the main stage filled with santri and guardians.',
     hl_date: '8 March 2023', hl_cat: 'School News',
     hl_title: 'Nurul Wafa Boarding School in Demung Holds Haflatul Imtihan and Its 46th Haul',
     hl_excerpt: 'The Haflatul Imtihan and the 46th Haul of the late KH. Ahmad Sibawayhie Syadzli were held at Pondok Pesantren Nurul Wafa, Demung, Besuki, Situbondo — attended by masyayikh, invited guests, santri, and guardians. Under the Nurul Wafa Foundation, the school combines classical kitab kuning studies of a traditional salaf pesantren with the national education curriculum, from playgroup to university.',
