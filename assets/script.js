@@ -87,9 +87,8 @@
   /* ---------- Accessibility: dark mode ---------- */
   var themeBtn = document.getElementById('themeBtn');
   function isDark() {
-    var t = document.documentElement.getAttribute('data-theme');
-    if (t) return t === 'dark';
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    /* Bawaan selalu terang; gelap hanya dari pilihan pengunjung. */
+    return document.documentElement.getAttribute('data-theme') === 'dark';
   }
   var THEME_TXT = {
     id: { toDark: '☾ Mode Gelap', toLight: '☀ Mode Terang' },
@@ -102,7 +101,9 @@
     themeBtn.textContent = dark ? t.toLight : t.toDark;
   }
   themeBtn.addEventListener('click', function () {
-    document.documentElement.setAttribute('data-theme', isDark() ? 'light' : 'dark');
+    var next = isDark() ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('nw-theme-v2', next); } catch (e) {}
     syncThemeBtn();
   });
 
