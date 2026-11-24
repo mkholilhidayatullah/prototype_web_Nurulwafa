@@ -178,7 +178,7 @@
     ms_label: 'Information & Registration', ms_note: 'Boarding school phone / WhatsApp',
     nav_home: 'Home', nav_profil: 'Profile', nav_unit: 'Education Units', nav_program: 'Programs', nav_berita: 'News', nav_galeri: 'Gallery', nav_kontak: 'Contact',
     nav_psb: 'New Student Registration (PSB) →',
-    hero_cap: 'Haflatul Imtihan & the 46th Haul of Ponpes Nurul Wafa, Demung — the main stage filled with santri and guardians.',
+    hero_cap: 'The caretakers of Pondok Pesantren Nurul Wafa: KH. Moh Abdul Hafidh Sibawayhie, S.H (left) and KH. Moh Mahfudh Sibawayhie, S.H (right).',
     hl_date: '8 March 2023', hl_cat: 'School News',
     hl_title: 'Nurul Wafa Boarding School in Demung Holds Haflatul Imtihan and Its 46th Haul',
     hl_excerpt: 'The Haflatul Imtihan and the 46th Haul of the late KH. Ahmad Sibawayhie Syadzli were held at Pondok Pesantren Nurul Wafa, Demung, Besuki, Situbondo — attended by masyayikh, invited guests, santri, and guardians. Under the Nurul Wafa Foundation, the school combines classical kitab kuning studies of a traditional salaf pesantren with the national education curriculum, from playgroup to university.',
