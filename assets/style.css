@@ -510,11 +510,7 @@ details.faq[open ] summary::after{transform:rotate(180deg)}
   .wa-float{width:52px;height:52px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom))}
 }
 
-/* ---------- Hero duo: dua potret pengasuh berdampingan ----------
-   Ditempatkan di akhir berkas agar menimpa aturan .hero-photo img
-   generik di blok ≤920px/≤640px di atas (specificity setara,
-   urutan terakhir yang berlaku). Caption tetap menimpa di dasar
-   figure lewat aturan .hero-photo figcaption yang sudah ada. */
-.hero-duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.hero-duo img{width:100%;height:clamp(320px,48vw,560px);object-fit:cover;object-position:50% 15%;animation:none}
-@media (max-width:640px){.hero-duo{gap:6px}.hero-duo img{height:240px}}
+.gal-grid figure.feat .gal-duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gal-grid figure.feat .gal-duo img{aspect-ratio:4/5;object-fit:cover;object-position:50% 15%}
+.gal-grid figure.feat .gal-person{margin:0}
+.gal-grid figure.feat .gal-person figcaption{font-size:14px;color:var(--ink-soft);padding-top:7px;text-align:center}
