@@ -511,6 +511,6 @@ details.faq[open ] summary::after{transform:rotate(180deg)}
 }
 
 .gal-grid figure.feat .gal-duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.gal-grid figure.feat .gal-duo img{aspect-ratio:4/5;object-fit:cover;object-position:50% 15%}
+.gal-grid figure.feat .gal-duo img{aspect-ratio:9/16;object-fit:cover}
 .gal-grid figure.feat .gal-person{margin:0}
 .gal-grid figure.feat .gal-person figcaption{font-size:14px;color:var(--ink-soft);padding-top:7px;text-align:center}
